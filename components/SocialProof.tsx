@@ -8,7 +8,7 @@ import { GMB } from "@/lib/gmb-data";
 function ReviewCard({ review }: { review: (typeof GMB.reviews)[number] }) {
   return (
     <div
-      className="glass rounded-2xl p-6 mx-3 w-72 flex-shrink-0"
+      className="glass rounded-2xl p-8 mx-3 w-80 flex-shrink-0"
       style={{ cursor: "none" }}
     >
       <div className="flex gap-1 mb-4">
@@ -66,7 +66,7 @@ export default function SocialProof() {
         }}
       />
 
-      <div className="max-w-7xl mx-auto px-6 mb-16" ref={ref}>
+      <div className="max-w-7xl mx-auto px-5 sm:px-8 mb-16" ref={ref}>
         <div className="flex flex-col md:flex-row md:items-end gap-10 md:gap-16">
           {/* Giant rating */}
           <motion.div

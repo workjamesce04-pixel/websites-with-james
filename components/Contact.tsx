@@ -46,7 +46,7 @@ export default function Contact() {
     background: "rgba(255,255,255,0.03)",
     border: "1px solid rgba(255,255,255,0.08)",
     borderRadius: "12px",
-    padding: "14px 18px",
+    padding: "16px 22px",
     color: "#f0f0f0",
     fontSize: "14px",
     outline: "none",
@@ -61,7 +61,7 @@ export default function Contact() {
       style={{ background: "#0d0d0d" }}
     >
       <Toaster position="top-right" />
-      <div className="max-w-7xl mx-auto px-6" ref={ref}>
+      <div className="max-w-7xl mx-auto px-5 sm:px-8" ref={ref}>
         <motion.div
           initial={{ opacity: 0 }}
           animate={inView ? { opacity: 1 } : {}}
@@ -232,7 +232,7 @@ export default function Contact() {
             {/* Map embed */}
             <div className="rounded-2xl overflow-hidden flex-1 min-h-[240px]" style={{ border: "1px solid var(--border)" }}>
               <iframe
-                src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU3Kgs&q=${GMB.address.mapEmbedQuery}`}
+                src={`https://www.google.com/maps/embed/v1/place?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_KEY}&q=${GMB.address.mapEmbedQuery}`}
                 width="100%"
                 height="100%"
                 style={{ border: 0, minHeight: "240px", filter: "invert(90%) hue-rotate(180deg)" }}

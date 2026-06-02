@@ -40,7 +40,7 @@ export default function Footer() {
         borderTop: "1px solid var(--accent)",
       }}
     >
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-5 sm:px-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
           {/* Brand */}
           <div>

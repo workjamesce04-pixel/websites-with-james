@@ -19,7 +19,7 @@ export default function About() {
       className="py-24 md:py-36"
       style={{ background: "#0d0d0d" }}
     >
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-5 sm:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
           {/* Image side */}
           <motion.div

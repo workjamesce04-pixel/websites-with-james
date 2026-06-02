@@ -28,7 +28,7 @@ export default function Navbar() {
           : "py-6"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-5 sm:px-8 flex items-center justify-between">
         <a
           href="#hero"
           className="text-white font-semibold tracking-tight text-sm uppercase"
@@ -56,7 +56,7 @@ export default function Navbar() {
 
         <a
           href={`tel:${GMB.phoneTel}`}
-          className="hidden md:inline-flex items-center gap-2 text-xs uppercase tracking-widest px-5 py-2.5 rounded-full border transition-all duration-300"
+          className="hidden md:inline-flex items-center gap-2 text-xs uppercase tracking-widest px-7 py-3 rounded-full border transition-all duration-300"
           style={{
             borderColor: "var(--accent)",
             color: "var(--accent)",

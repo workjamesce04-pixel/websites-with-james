@@ -37,28 +37,37 @@ function ServiceCard({
       initial={{ opacity: 0, y: 30 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.6, delay: index * 0.1 }}
-      className="glass rounded-2xl p-7 group relative overflow-hidden"
+      className="glass rounded-2xl p-9 group relative overflow-hidden"
       style={{
         gridColumn: service.highlight ? "span 2" : "span 1",
         cursor: "none",
+        transition: "border-color 0.3s, box-shadow 0.3s, transform 0.3s",
       }}
       onMouseEnter={(e) => {
-        (e.currentTarget as HTMLElement).style.borderColor =
-          "rgba(0,212,255,0.3)";
-        (e.currentTarget as HTMLElement).style.boxShadow =
-          "0 0 30px rgba(0,212,255,0.08), 0 0 60px rgba(0,212,255,0.04)";
+        const el = e.currentTarget as HTMLElement;
+        el.style.borderColor = "rgba(0,212,255,0.35)";
+        el.style.boxShadow = "0 0 40px rgba(0,212,255,0.12), 0 0 80px rgba(0,212,255,0.06), inset 0 1px 0 rgba(0,212,255,0.1)";
+        el.style.transform = "translateY(-3px)";
       }}
       onMouseLeave={(e) => {
-        (e.currentTarget as HTMLElement).style.borderColor = "var(--border)";
-        (e.currentTarget as HTMLElement).style.boxShadow = "none";
+        const el = e.currentTarget as HTMLElement;
+        el.style.borderColor = "var(--border)";
+        el.style.boxShadow = "none";
+        el.style.transform = "translateY(0)";
       }}
     >
       {/* Glow */}
       <div
-        className="absolute -top-20 -right-20 w-48 h-48 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+        className="absolute -top-20 -right-20 w-64 h-64 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
         style={{
           background:
-            "radial-gradient(circle, rgba(0,212,255,0.08) 0%, transparent 70%)",
+            "radial-gradient(circle, rgba(0,212,255,0.12) 0%, transparent 70%)",
+        }}
+      />
+      <div
+        className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+        style={{
+          background: "linear-gradient(135deg, rgba(0,212,255,0.03) 0%, transparent 60%)",
         }}
       />
 
@@ -107,7 +116,7 @@ export default function Services() {
 
   return (
     <section id="services" className="py-24 md:py-36" style={{ background: "#080808" }}>
-      <div className="max-w-7xl mx-auto px-6" ref={ref}>
+      <div className="max-w-7xl mx-auto px-5 sm:px-8" ref={ref}>
         <div className="mb-16">
           <motion.div
             initial={{ opacity: 0 }}
