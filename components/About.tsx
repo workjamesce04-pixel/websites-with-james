@@ -16,9 +16,10 @@ export default function About() {
     <section
       id="about"
       ref={ref}
-      className="py-24 md:py-36"
+      className="py-28 md:py-40"
       style={{ background: "#0d0d0d" }}
     >
+      <div className="orb" style={{ width: 500, height: 500, top: "-5%", right: "-10%", background: "rgba(0,212,255,0.05)", position: "absolute" }} />
       <div className="max-w-7xl mx-auto px-5 sm:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
           {/* Image side */}

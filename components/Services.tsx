@@ -37,70 +37,73 @@ function ServiceCard({
       initial={{ opacity: 0, y: 30 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.6, delay: index * 0.1 }}
-      className="glass rounded-2xl p-9 group relative overflow-hidden"
+      className="grad-border glass rounded-2xl p-9 group relative overflow-hidden"
       style={{
         gridColumn: service.highlight ? "span 2" : "span 1",
         cursor: "none",
-        transition: "border-color 0.3s, box-shadow 0.3s, transform 0.3s",
+        transition: "box-shadow 0.35s, transform 0.35s",
       }}
       onMouseEnter={(e) => {
         const el = e.currentTarget as HTMLElement;
-        el.style.borderColor = "rgba(0,212,255,0.35)";
-        el.style.boxShadow = "0 0 40px rgba(0,212,255,0.12), 0 0 80px rgba(0,212,255,0.06), inset 0 1px 0 rgba(0,212,255,0.1)";
-        el.style.transform = "translateY(-3px)";
+        el.style.boxShadow = "0 20px 60px rgba(0,0,0,0.6), 0 0 40px rgba(0,212,255,0.1)";
+        el.style.transform = "translateY(-4px)";
       }}
       onMouseLeave={(e) => {
         const el = e.currentTarget as HTMLElement;
-        el.style.borderColor = "var(--border)";
-        el.style.boxShadow = "none";
+        el.style.boxShadow = "";
         el.style.transform = "translateY(0)";
       }}
     >
-      {/* Glow */}
+      {/* Ambient glow top-right */}
       <div
-        className="absolute -top-20 -right-20 w-64 h-64 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-        style={{
-          background:
-            "radial-gradient(circle, rgba(0,212,255,0.12) 0%, transparent 70%)",
-        }}
-      />
-      <div
-        className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-        style={{
-          background: "linear-gradient(135deg, rgba(0,212,255,0.03) 0%, transparent 60%)",
-        }}
+        className="absolute -top-16 -right-16 w-56 h-56 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
+        style={{ background: "radial-gradient(circle, rgba(0,212,255,0.1) 0%, transparent 70%)" }}
       />
 
+      {/* Ghost index number */}
       <div
-        className="inline-flex items-center justify-center w-12 h-12 rounded-xl mb-5 transition-transform duration-300 group-hover:scale-110"
+        className="absolute bottom-4 right-6 font-serif select-none pointer-events-none transition-colors duration-500"
         style={{
-          background: "rgba(0,212,255,0.08)",
-          border: "1px solid rgba(0,212,255,0.15)",
+          fontSize: "clamp(60px,10vw,100px)",
+          fontWeight: 700,
+          lineHeight: 1,
+          color: "rgba(0,212,255,0.04)",
         }}
       >
-        <Icon size={20} style={{ color: "var(--accent)" }} />
+        0{index + 1}
+      </div>
+
+      <div
+        className="inline-flex items-center justify-center w-14 h-14 rounded-2xl mb-6 transition-all duration-300 group-hover:scale-110 group-hover:shadow-[0_0_24px_rgba(0,212,255,0.3)]"
+        style={{
+          background: "linear-gradient(135deg, rgba(0,212,255,0.15) 0%, rgba(0,212,255,0.06) 100%)",
+          border: "1px solid rgba(0,212,255,0.25)",
+        }}
+      >
+        <Icon size={22} style={{ color: "var(--accent)" }} />
       </div>
 
       <h3
-        className="font-serif text-xl mb-3"
+        className="font-serif text-2xl mb-3 relative z-10"
         style={{ fontWeight: 400, letterSpacing: "-0.01em" }}
       >
         {service.title}
       </h3>
       <p
-        className="text-sm leading-relaxed"
-        style={{ color: "rgba(240,240,240,0.5)" }}
+        className="text-sm leading-relaxed relative z-10"
+        style={{ color: "rgba(240,240,240,0.55)", lineHeight: 1.75 }}
       >
         {service.description}
       </p>
 
       {service.highlight && (
         <span
-          className="absolute top-5 right-5 text-xs uppercase tracking-widest px-3 py-1 rounded-full"
+          className="absolute top-6 right-6 text-xs uppercase tracking-widest px-3 py-1.5 rounded-full"
           style={{
-            background: "rgba(0,212,255,0.1)",
+            background: "rgba(0,212,255,0.12)",
             color: "var(--accent)",
-            border: "1px solid rgba(0,212,255,0.2)",
+            border: "1px solid rgba(0,212,255,0.3)",
+            boxShadow: "0 0 12px rgba(0,212,255,0.1)",
           }}
         >
           Core Service
@@ -115,7 +118,9 @@ export default function Services() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="services" className="py-24 md:py-36" style={{ background: "#080808" }}>
+    <section id="services" className="py-28 md:py-40" style={{ background: "#080808" }}>
+      <div className="orb" style={{ width: 500, height: 500, top: "10%", right: "-15%", background: "rgba(0,212,255,0.05)", position: "absolute" }} />
+      <div className="orb" style={{ width: 350, height: 350, bottom: "10%", left: "-10%", background: "rgba(0,100,200,0.04)", position: "absolute" }} />
       <div className="max-w-7xl mx-auto px-5 sm:px-8" ref={ref}>
         <div className="mb-16">
           <motion.div

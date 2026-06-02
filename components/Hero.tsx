@@ -44,18 +44,23 @@ export default function Hero() {
         <ParticleField />
       </div>
 
+      {/* Ambient orbs */}
+      <div className="orb float-slow" style={{ width: 600, height: 600, top: "-10%", left: "-10%", background: "rgba(0,212,255,0.07)", zIndex: 1 }} />
+      <div className="orb" style={{ width: 400, height: 400, bottom: "5%", right: "-5%", background: "rgba(0,212,255,0.05)", zIndex: 1, animation: "float-slow 12s ease-in-out infinite reverse" }} />
+      <div className="orb" style={{ width: 300, height: 300, top: "40%", left: "60%", background: "rgba(0,100,180,0.06)", zIndex: 1, animation: "float-slow 15s ease-in-out infinite" }} />
+
       {/* Vignette */}
       <div
         className="absolute inset-0 z-10 pointer-events-none"
         style={{
           background:
-            "radial-gradient(ellipse 80% 80% at 50% 50%, transparent 40%, #080808 100%)",
+            "radial-gradient(ellipse 80% 80% at 50% 50%, transparent 30%, #080808 100%)",
         }}
       />
 
       {/* Bottom fade */}
       <div
-        className="absolute bottom-0 left-0 right-0 h-48 z-10 pointer-events-none"
+        className="absolute bottom-0 left-0 right-0 h-64 z-10 pointer-events-none"
         style={{
           background: "linear-gradient(to bottom, transparent, #080808)",
         }}
@@ -69,16 +74,17 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={visible ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="mb-6 inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs uppercase tracking-widest"
+              className="mb-8 inline-flex items-center gap-2.5 px-5 py-2 rounded-full text-xs uppercase tracking-widest"
               style={{
-                border: "1px solid rgba(0,212,255,0.3)",
+                border: "1px solid rgba(0,212,255,0.4)",
                 color: "var(--accent)",
-                background: "rgba(0,212,255,0.06)",
+                background: "rgba(0,212,255,0.08)",
+                boxShadow: "0 0 20px rgba(0,212,255,0.12), inset 0 1px 0 rgba(0,212,255,0.15)",
               }}
             >
               <span
-                className="w-1.5 h-1.5 rounded-full animate-pulse"
-                style={{ background: "var(--accent)" }}
+                className="w-2 h-2 rounded-full animate-pulse"
+                style={{ background: "var(--accent)", boxShadow: "0 0 8px var(--accent)" }}
               />
               Web Design · Local SEO · Enfield, London
             </motion.div>

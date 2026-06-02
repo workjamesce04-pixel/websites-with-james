@@ -8,7 +8,7 @@ import { GMB } from "@/lib/gmb-data";
 function ReviewCard({ review }: { review: (typeof GMB.reviews)[number] }) {
   return (
     <div
-      className="glass rounded-2xl p-8 mx-3 w-80 flex-shrink-0"
+      className="grad-border glass rounded-2xl p-8 mx-4 w-80 flex-shrink-0"
       style={{ cursor: "none" }}
     >
       <div className="flex gap-1 mb-4">

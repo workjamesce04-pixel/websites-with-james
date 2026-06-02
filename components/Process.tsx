@@ -10,10 +10,11 @@ export default function Process() {
   return (
     <section
       id="process"
-      className="py-24 md:py-36"
+      className="py-28 md:py-40"
       style={{ background: "#0d0d0d" }}
     >
-      <div className="max-w-7xl mx-auto px-6" ref={ref}>
+      <div className="orb" style={{ width: 450, height: 450, top: "20%", left: "50%", transform: "translateX(-50%)", background: "rgba(0,212,255,0.04)", position: "absolute" }} />
+      <div className="max-w-7xl mx-auto px-5 sm:px-8" ref={ref}>
         <motion.div
           initial={{ opacity: 0 }}
           animate={inView ? { opacity: 1 } : {}}
@@ -43,62 +44,70 @@ export default function Process() {
           </span>
         </motion.h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px"
-          style={{ background: "rgba(255,255,255,0.06)" }}>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
           {GMB.process.map((step, i) => (
             <motion.div
               key={step.number}
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.2 + i * 0.12 }}
-              className="relative p-8 group"
-              style={{ background: "#0d0d0d", cursor: "none" }}
+              className="grad-border glass rounded-2xl p-8 group relative overflow-hidden"
+              style={{ cursor: "none", transition: "box-shadow 0.35s, transform 0.35s" }}
               onMouseEnter={(e) => {
-                (e.currentTarget as HTMLElement).style.background = "#111";
+                const el = e.currentTarget as HTMLElement;
+                el.style.boxShadow = "0 20px 50px rgba(0,0,0,0.5), 0 0 30px rgba(0,212,255,0.08)";
+                el.style.transform = "translateY(-4px)";
               }}
               onMouseLeave={(e) => {
-                (e.currentTarget as HTMLElement).style.background = "#0d0d0d";
+                const el = e.currentTarget as HTMLElement;
+                el.style.boxShadow = "";
+                el.style.transform = "translateY(0)";
               }}
             >
-              {/* Giant number behind */}
+              {/* Giant ghost number */}
               <div
-                className="absolute top-4 right-6 font-serif select-none pointer-events-none"
+                className="absolute -bottom-4 -right-2 font-serif select-none pointer-events-none"
                 style={{
-                  fontSize: "clamp(80px, 12vw, 140px)",
+                  fontSize: "clamp(90px, 14vw, 150px)",
                   fontWeight: 700,
-                  color: "rgba(0,212,255,0.04)",
+                  color: "rgba(0,212,255,0.05)",
                   lineHeight: 1,
-                  transition: "color 0.3s",
                 }}
               >
                 {step.number}
               </div>
 
+              {/* Step pill */}
               <div
-                className="text-xs uppercase tracking-widest mb-6"
-                style={{ color: "var(--accent)" }}
+                className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs uppercase tracking-widest mb-6"
+                style={{
+                  background: "rgba(0,212,255,0.08)",
+                  border: "1px solid rgba(0,212,255,0.2)",
+                  color: "var(--accent)",
+                }}
               >
-                {step.number}
+                <span className="w-1.5 h-1.5 rounded-full" style={{ background: "var(--accent)" }} />
+                Step {step.number}
               </div>
 
               <h3
                 className="font-serif text-2xl mb-4 relative z-10"
-                style={{ fontWeight: 400 }}
+                style={{ fontWeight: 400, letterSpacing: "-0.01em" }}
               >
                 {step.title}
               </h3>
 
               <p
                 className="text-sm leading-relaxed relative z-10"
-                style={{ color: "rgba(240,240,240,0.5)" }}
+                style={{ color: "rgba(240,240,240,0.55)", lineHeight: 1.75 }}
               >
                 {step.description}
               </p>
 
-              {/* Bottom accent line on hover */}
+              {/* Accent bottom bar */}
               <div
-                className="absolute bottom-0 left-0 right-0 h-px transition-opacity duration-300 opacity-0 group-hover:opacity-100"
-                style={{ background: "var(--accent)" }}
+                className="absolute bottom-0 left-0 right-0 h-0.5 opacity-0 group-hover:opacity-100 transition-opacity duration-400 rounded-b-2xl"
+                style={{ background: "linear-gradient(90deg, transparent, var(--accent), transparent)" }}
               />
             </motion.div>
           ))}
