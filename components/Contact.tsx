@@ -4,7 +4,6 @@ import { motion, useInView } from "framer-motion";
 import { Phone, Mail, MapPin, Send } from "lucide-react";
 import { GMB } from "@/lib/gmb-data";
 import toast, { Toaster } from "react-hot-toast";
-import emailjs from "emailjs-com";
 
 export default function Contact() {
   const ref = useRef(null);
@@ -16,24 +15,27 @@ export default function Contact() {
     e.preventDefault();
     setSending(true);
     try {
-      await emailjs.send(
-        "service_r5x79ko",
-        "template_aj88mih",
-        {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          access_key: "7e5d2048-d6ae-44c3-889e-4b8ebfa85d86",
+          subject: "New enquiry — Websites With James",
           name: form.name,
           email: form.email,
           phone: form.phone,
           message: form.message,
-        },
-        "vIElErH48C1hX17BD"
-      );
+        }),
+      });
+      const data = await res.json();
+      if (!data.success) throw new Error(data.message);
       toast.success("Message sent! I'll be in touch shortly.", {
         style: { background: "#111", color: "#f0f0f0", border: "1px solid rgba(0,212,255,0.3)" },
         iconTheme: { primary: "var(--accent)", secondary: "#111" },
       });
       setForm({ name: "", email: "", phone: "", message: "" });
     } catch (err) {
-      console.error("EmailJS error:", err);
+      console.error("Web3Forms error:", err);
       toast.error("Something went wrong. Please try again or email hello@websiteswithjames.co.uk");
     } finally {
       setSending(false);
