@@ -16,13 +16,13 @@ export default function Footer() {
 
   return (
     <footer
-      className="pt-16 pb-8"
+      className="pt-16 pb-8 px-6 sm:px-8"
       style={{
         background: "#050505",
         borderTop: "1px solid rgba(201,169,110,0.2)",
       }}
     >
-      <div className="max-w-6xl mx-auto px-6 sm:px-8">
+      <div className="max-w-6xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
           {/* Brand */}
           <div>

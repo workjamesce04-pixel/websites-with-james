@@ -8,8 +8,8 @@ export default function Process() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="process" className="py-32 md:py-44" style={{ background: "#0A0A0A" }}>
-      <div className="max-w-6xl mx-auto px-6 sm:px-8" ref={ref}>
+    <section id="process" className="py-24 md:py-36 px-6 sm:px-8" style={{ background: "#0A0A0A" }}>
+      <div className="max-w-6xl mx-auto" ref={ref}>
         <motion.div
           initial={{ opacity: 0 }}
           animate={inView ? { opacity: 1 } : {}}

@@ -21,8 +21,8 @@ export default function Gallery() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="gallery" className="py-32 md:py-44" style={{ background: "#0D0D0D" }}>
-      <div className="max-w-6xl mx-auto px-6 sm:px-8" ref={ref}>
+    <section id="gallery" className="py-24 md:py-36 px-6 sm:px-8" style={{ background: "#0D0D0D" }}>
+      <div className="max-w-6xl mx-auto" ref={ref}>
         <motion.div
           initial={{ opacity: 0 }}
           animate={inView ? { opacity: 1 } : {}}

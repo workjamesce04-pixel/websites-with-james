@@ -70,10 +70,10 @@ export default function SocialProof() {
   return (
     <section
       id="reviews"
-      className="py-32 md:py-44"
+      className="py-24 md:py-36 px-6 sm:px-8"
       style={{ background: "#0D0D0D" }}
     >
-      <div className="max-w-6xl mx-auto px-6 sm:px-8" ref={ref}>
+      <div className="max-w-6xl mx-auto" ref={ref}>
         <div className="flex flex-col md:flex-row md:items-end gap-10 mb-16">
           {/* Giant rating */}
           <motion.div

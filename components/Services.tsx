@@ -109,8 +109,8 @@ export default function Services() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="services" className="py-32 md:py-44" style={{ background: "#0A0A0A" }}>
-      <div className="max-w-6xl mx-auto px-6 sm:px-8" ref={ref}>
+    <section id="services" className="py-24 md:py-36 px-6 sm:px-8" style={{ background: "#0A0A0A" }}>
+      <div className="max-w-6xl mx-auto" ref={ref}>
         <div className="mb-16">
           <motion.div
             initial={{ opacity: 0 }}

@@ -49,6 +49,13 @@ body::before {
   opacity: 0.35;
 }
 
+@media (pointer: coarse) {
+  .cursor-dot,
+  .cursor-ring {
+    display: none !important;
+  }
+}
+
 .cursor-dot {
   width: 6px;
   height: 6px;

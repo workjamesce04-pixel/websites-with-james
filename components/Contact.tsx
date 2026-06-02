@@ -60,9 +60,9 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-32 md:py-44" style={{ background: "#0A0A0A" }}>
+    <section id="contact" className="py-24 md:py-36 px-6 sm:px-8" style={{ background: "#0A0A0A" }}>
       <Toaster position="top-right" />
-      <div className="max-w-6xl mx-auto px-6 sm:px-8" ref={ref}>
+      <div className="max-w-6xl mx-auto" ref={ref}>
 
         <motion.div
           initial={{ opacity: 0 }}

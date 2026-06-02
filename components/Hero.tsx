@@ -20,11 +20,11 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative w-full min-h-screen flex flex-col items-center justify-center overflow-hidden"
-      style={{ paddingTop: "120px", paddingBottom: "120px" }}
+      className="relative w-full flex flex-col items-center justify-center overflow-hidden"
+      style={{ minHeight: "100svh", paddingTop: "120px", paddingBottom: "80px" }}
     >
       {/* Particle background */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0 pointer-events-none">
         <ParticleField />
       </div>
 
@@ -43,7 +43,7 @@ export default function Hero() {
       />
 
       {/* Content */}
-      <div className="relative z-20 w-full max-w-6xl mx-auto px-6 sm:px-8 flex flex-col items-center text-center">
+      <div className="relative z-20 w-full max-w-6xl mx-auto px-6 sm:px-8 flex flex-col items-center text-center pt-16 sm:pt-0">
 
         {/* Location badge */}
         <motion.div

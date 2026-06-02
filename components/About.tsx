@@ -14,10 +14,10 @@ export default function About() {
     <section
       id="about"
       ref={ref}
-      className="py-32 md:py-44"
+      className="py-24 md:py-36 px-6 sm:px-8"
       style={{ background: "#0D0D0D" }}
     >
-      <div className="max-w-6xl mx-auto px-6 sm:px-8">
+      <div className="max-w-6xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
 
           {/* Left: pull quote + bio */}
