@@ -1,13 +1,14 @@
 "use client";
 import { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { GMB } from "@/lib/gmb-data";
 
 const links = [
-  { label: "About", href: "#about" },
+  { label: "About",    href: "#about" },
   { label: "Services", href: "#services" },
-  { label: "Reviews", href: "#reviews" },
-  { label: "Process", href: "#process" },
-  { label: "Contact", href: "#contact" },
+  { label: "Work",     href: "#gallery" },
+  { label: "Reviews",  href: "#reviews" },
+  { label: "Contact",  href: "#contact" },
 ];
 
 export default function Navbar() {
@@ -15,105 +16,106 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    const handler = () => setScrolled(window.scrollY > 40);
-    window.addEventListener("scroll", handler, { passive: true });
-    return () => window.removeEventListener("scroll", handler);
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [open]);
+
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled
-          ? "bg-[#080808]/90 backdrop-blur-xl border-b border-white/5 py-3"
-          : "py-6"
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-5 sm:px-8 flex items-center justify-between">
-        <a
-          href="#hero"
-          className="text-white font-semibold tracking-tight text-sm uppercase"
-          style={{ letterSpacing: "0.15em", cursor: "none" }}
-        >
-          <span style={{ color: "var(--accent)" }}>W</span>ebsites
-          <span className="text-white/40 mx-1">·</span>
-          <span style={{ color: "var(--accent)" }}>W</span>ith James
-        </a>
-
-        {/* Desktop */}
-        <ul className="hidden md:flex items-center gap-8">
-          {links.map((l) => (
-            <li key={l.href}>
-              <a
-                href={l.href}
-                className="text-xs uppercase tracking-widest text-white/50 hover:text-white transition-colors duration-200"
-                style={{ cursor: "none" }}
-              >
-                {l.label}
-              </a>
-            </li>
-          ))}
-        </ul>
-
-        <a
-          href={`tel:${GMB.phoneTel}`}
-          className="hidden md:inline-flex items-center gap-2 text-xs uppercase tracking-widest px-7 py-3 rounded-full border transition-all duration-300"
-          style={{
-            borderColor: "var(--accent)",
-            color: "var(--accent)",
-            cursor: "none",
-          }}
-          onMouseEnter={(e) => {
-            (e.currentTarget as HTMLElement).style.background = "var(--accent)";
-            (e.currentTarget as HTMLElement).style.color = "#080808";
-          }}
-          onMouseLeave={(e) => {
-            (e.currentTarget as HTMLElement).style.background = "transparent";
-            (e.currentTarget as HTMLElement).style.color = "var(--accent)";
-          }}
-        >
-          Call Now
-        </a>
-
-        {/* Mobile hamburger */}
-        <button
-          className="md:hidden flex flex-col gap-1.5 p-1"
-          onClick={() => setOpen(!open)}
-          aria-label="Toggle menu"
-          style={{ cursor: "none" }}
-        >
-          <span
-            className={`block w-6 h-px bg-white transition-all ${open ? "rotate-45 translate-y-2" : ""}`}
-          />
-          <span
-            className={`block w-6 h-px bg-white transition-all ${open ? "opacity-0" : ""}`}
-          />
-          <span
-            className={`block w-6 h-px bg-white transition-all ${open ? "-rotate-45 -translate-y-2" : ""}`}
-          />
-        </button>
-      </div>
-
-      {open && (
-        <div className="md:hidden bg-[#0d0d0d] border-t border-white/5 px-6 py-6 flex flex-col gap-5">
-          {links.map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
-              onClick={() => setOpen(false)}
-              className="text-sm uppercase tracking-widest text-white/70"
-            >
-              {l.label}
-            </a>
-          ))}
-          <a
-            href={`tel:${GMB.phoneTel}`}
-            className="text-sm uppercase tracking-widest"
-            style={{ color: "var(--accent)" }}
-          >
-            {GMB.phone}
+    <>
+      <nav
+        className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+        style={{
+          background: scrolled ? "rgba(255,255,255,0.82)" : "rgba(255,255,255,0)",
+          backdropFilter: scrolled ? "saturate(180%) blur(20px)" : "none",
+          WebkitBackdropFilter: scrolled ? "saturate(180%) blur(20px)" : "none",
+          borderBottom: scrolled ? "1px solid rgba(0,0,0,0.06)" : "none",
+        }}
+      >
+        <div className="max-w-[1200px] mx-auto px-6 h-[48px] flex items-center justify-between">
+          {/* Logo */}
+          <a href="#" className="text-sm font-semibold tracking-tight" style={{ color: "var(--text)", letterSpacing: "-0.02em" }}>
+            Websites With James
           </a>
+
+          {/* Desktop links — centered */}
+          <ul className="hidden md:flex items-center gap-7 absolute left-1/2 -translate-x-1/2">
+            {links.map((l) => (
+              <li key={l.href}>
+                <a href={l.href} className="nav-link">{l.label}</a>
+              </li>
+            ))}
+          </ul>
+
+          {/* CTA */}
+          <a
+            href="#contact"
+            className="hidden md:inline-flex items-center gap-1 text-sm font-medium transition-colors duration-150"
+            style={{ color: "var(--accent)", fontSize: "13px" }}
+            onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = "var(--accent-hover)")}
+            onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = "var(--accent)")}
+          >
+            Get a free audit →
+          </a>
+
+          {/* Mobile hamburger */}
+          <button
+            className="md:hidden w-8 h-8 flex flex-col items-center justify-center gap-1.5"
+            onClick={() => setOpen(!open)}
+            aria-label="Menu"
+          >
+            <span className="block w-5 h-px bg-[var(--text)] transition-all duration-200"
+              style={{ transform: open ? "rotate(45deg) translate(2px,2px)" : "none" }} />
+            <span className="block w-5 h-px bg-[var(--text)] transition-all duration-200"
+              style={{ opacity: open ? 0 : 1 }} />
+            <span className="block w-5 h-px bg-[var(--text)] transition-all duration-200"
+              style={{ transform: open ? "rotate(-45deg) translate(2px,-2px)" : "none" }} />
+          </button>
         </div>
-      )}
-    </nav>
+      </nav>
+
+      {/* Mobile menu */}
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-40 flex flex-col pt-16"
+            style={{ background: "rgba(255,255,255,0.96)", backdropFilter: "blur(20px)" }}
+          >
+            <div className="flex flex-col px-6 pt-8 gap-1">
+              {links.map((l, i) => (
+                <motion.a
+                  key={l.href}
+                  href={l.href}
+                  onClick={() => setOpen(false)}
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: i * 0.06 }}
+                  className="text-2xl font-semibold py-3 border-b"
+                  style={{ color: "var(--text)", borderColor: "var(--border)", letterSpacing: "-0.02em" }}
+                >
+                  {l.label}
+                </motion.a>
+              ))}
+            </div>
+            <div className="px-6 mt-8 flex flex-col gap-3">
+              <a href="#contact" onClick={() => setOpen(false)} className="btn-primary justify-center py-4 text-base rounded-2xl">
+                Get a Free Audit
+              </a>
+              <a href={`tel:${GMB.phoneTel}`} onClick={() => setOpen(false)} className="btn-secondary justify-center py-4 text-base rounded-2xl">
+                {GMB.phone}
+              </a>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
 }

@@ -24,7 +24,7 @@ export const GMB = {
   rating: 5.0,
   reviewCount: 1,
   geo: { lat: 51.6528, lng: -0.0778 },
-  accentColor: "#00D4FF",
+  accentColor: "#C9A96E",
   stats: [
     { value: 30, suffix: "+", label: "Sites Launched" },
     { value: 5.0, suffix: "★", label: "Google Rating", decimals: 1 },

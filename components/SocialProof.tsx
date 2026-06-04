@@ -6,142 +6,129 @@ import { GMB } from "@/lib/gmb-data";
 
 type Review = (typeof GMB.reviews)[number] & { business?: string };
 
-function ReviewCard({ review, index, inView }: { review: Review; index: number; inView: boolean }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 24 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.6, delay: 0.3 + index * 0.12 }}
-      className="flex flex-col"
-      style={{
-        background: "#111111",
-        border: "1px solid rgba(255,255,255,0.06)",
-        borderTop: "2px solid var(--accent)",
-        borderRadius: "16px",
-        padding: "2.5rem",
-      }}
-    >
-      <div className="flex gap-1 mb-6">
-        {Array.from({ length: review.rating }).map((_, i) => (
-          <Star key={i} size={14} fill="var(--accent)" style={{ color: "var(--accent)" }} />
-        ))}
-      </div>
-
-      <p
-        className="text-base flex-1 mb-8"
-        style={{
-          color: "var(--text-muted)",
-          lineHeight: 1.75,
-          fontStyle: "italic",
-        }}
-      >
-        &ldquo;{review.text}&rdquo;
-      </p>
-
-      <div className="flex items-center gap-3 pt-6" style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}>
-        <div
-          className="w-10 h-10 rounded-full flex items-center justify-center text-sm font-semibold flex-shrink-0"
-          style={{ background: "var(--accent)", color: "#0A0A0A" }}
-        >
-          {review.name[0]}
-        </div>
-        <div>
-          <div className="text-sm font-medium" style={{ color: "var(--text)" }}>
-            {review.name}
-          </div>
-          {review.business && (
-            <div className="text-xs mt-0.5" style={{ color: "var(--text-faint)" }}>
-              {review.business}
-            </div>
-          )}
-        </div>
-        <div className="ml-auto text-xs" style={{ color: "var(--text-faint)" }}>
-          {review.date}
-        </div>
-      </div>
-    </motion.div>
-  );
-}
-
 export default function SocialProof() {
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
+  const inView = useInView(ref, { once: true, margin: "-60px" });
 
   return (
-    <section
-      id="reviews"
-      className="py-24 md:py-36 px-6 sm:px-8"
-      style={{ background: "#0D0D0D" }}
-    >
-      <div className="max-w-6xl mx-auto" ref={ref}>
-        <div className="flex flex-col md:flex-row md:items-end gap-10 mb-16">
-          {/* Giant rating */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.85 }}
-            animate={inView ? { opacity: 1, scale: 1 } : {}}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="flex-shrink-0"
-          >
-            <div
-              className="font-serif leading-none"
-              style={{
-                fontSize: "clamp(88px, 14vw, 160px)",
-                fontWeight: 600,
-                color: "var(--accent)",
-                textShadow: "0 0 60px rgba(201,169,110,0.2)",
-              }}
-            >
-              {GMB.rating}
-            </div>
-            <div className="flex gap-1.5 mt-3">
-              {[1,2,3,4,5].map((i) => (
-                <Star key={i} size={18} fill="var(--accent)" style={{ color: "var(--accent)" }} />
-              ))}
-            </div>
-            <div
-              className="text-xs uppercase tracking-widest mt-3"
-              style={{ color: "var(--text-faint)" }}
-            >
-              Google Rating · Perfect Score
-            </div>
-          </motion.div>
+    <section id="reviews" style={{ background: "var(--bg-secondary)", padding: "96px 0 112px" }}>
+      <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 24px" }} ref={ref}>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.7, delay: 0.25 }}
-            className="md:pb-3"
-          >
-            <div
-              className="text-xs uppercase tracking-widest mb-4"
-              style={{ color: "var(--accent)" }}
-            >
-              What Clients Say
-            </div>
-            <h2
-              className="font-serif"
-              style={{
-                fontSize: "clamp(34px, 5vw, 60px)",
-                fontWeight: 500,
-                letterSpacing: "-0.02em",
-                lineHeight: 1.15,
-                color: "var(--text)",
-              }}
-            >
-              Results speak
-              <br />
-              <span style={{ fontStyle: "italic", color: "var(--text-muted)" }}>
-                louder than pitches.
-              </span>
-            </h2>
-          </motion.div>
-        </div>
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+          style={{ textAlign: "center", marginBottom: 20 }}
+        >
+          <p className="t-caption" style={{ marginBottom: 12 }}>Reviews</p>
+          <h2 className="t-title" style={{ marginBottom: 20 }}>
+            Results speak.{" "}
+            <span style={{ color: "var(--accent)" }}>Clients confirm.</span>
+          </h2>
+        </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+        {/* Rating row */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={inView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.5, delay: 0.15 }}
+          style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 56 }}
+        >
+          <span style={{ fontSize: 40, fontWeight: 700, color: "var(--text)", letterSpacing: "-0.04em" }}>5.0</span>
+          <div>
+            <div style={{ display: "flex", gap: 3, marginBottom: 4 }}>
+              {[1,2,3,4,5].map(i => <Star key={i} size={15} fill="#FFB800" style={{ color: "#FFB800" }} />)}
+            </div>
+            <p className="t-caption">Google Rating · Perfect score</p>
+          </div>
+        </motion.div>
+
+        {/* Review cards */}
+        <div className="reviews-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16, marginBottom: 48 }}>
           {(GMB.reviews as unknown as Review[]).map((review, i) => (
-            <ReviewCard key={i} review={review} index={i} inView={inView} />
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: 0.2 + i * 0.1 }}
+              style={{
+                background: "#fff",
+                borderRadius: 16,
+                padding: "28px 28px 24px",
+                boxShadow: "0 1px 4px rgba(0,0,0,0.06)",
+                display: "flex", flexDirection: "column",
+              }}
+            >
+              {/* Stars + badge */}
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 20 }}>
+                <div style={{ display: "flex", gap: 3 }}>
+                  {Array.from({ length: review.rating }).map((_, j) => (
+                    <Star key={j} size={13} fill="#FFB800" style={{ color: "#FFB800" }} />
+                  ))}
+                </div>
+                <span style={{
+                  fontSize: 11, fontWeight: 500,
+                  padding: "3px 10px", borderRadius: 999,
+                  background: "rgba(66,133,244,0.08)", color: "#4285f4",
+                }}>
+                  Google
+                </span>
+              </div>
+
+              {/* Quote */}
+              <p style={{ fontSize: 14, color: "var(--text-2)", lineHeight: 1.75, fontStyle: "italic", flex: 1, marginBottom: 24 }}>
+                &ldquo;{review.text}&rdquo;
+              </p>
+
+              {/* Author */}
+              <div style={{ display: "flex", alignItems: "center", gap: 12, paddingTop: 20, borderTop: "1px solid var(--border)" }}>
+                <div style={{
+                  width: 36, height: 36, borderRadius: "50%",
+                  background: "var(--bg-secondary)",
+                  display: "flex", alignItems: "center", justifyContent: "center",
+                  fontSize: 13, fontWeight: 600, color: "var(--text)", flexShrink: 0,
+                }}>
+                  {review.name[0]}
+                </div>
+                <div style={{ flex: 1, minWidth: 0 }}>
+                  <div style={{ fontSize: 13, fontWeight: 600, color: "var(--text)", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+                    {review.name}
+                  </div>
+                  {review.business && (
+                    <div style={{ fontSize: 12, color: "var(--text-3)", marginTop: 2, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+                      {review.business}
+                    </div>
+                  )}
+                </div>
+                <div style={{ fontSize: 12, color: "var(--text-3)", flexShrink: 0 }}>{review.date}</div>
+              </div>
+            </motion.div>
           ))}
         </div>
+
+        {/* CTA */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={inView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.5, delay: 0.55 }}
+          style={{ textAlign: "center" }}
+        >
+          <a
+            href="#contact"
+            style={{
+              display: "inline-flex", alignItems: "center", gap: 6,
+              padding: "12px 28px", borderRadius: 999,
+              background: "var(--accent)", color: "#fff",
+              fontSize: 14, fontWeight: 500, textDecoration: "none",
+              transition: "background 0.2s",
+            }}
+            onMouseEnter={e => ((e.currentTarget as HTMLElement).style.background = "var(--accent-hover)")}
+            onMouseLeave={e => ((e.currentTarget as HTMLElement).style.background = "var(--accent)")}
+          >
+            Get your free audit
+          </a>
+        </motion.div>
       </div>
     </section>
   );

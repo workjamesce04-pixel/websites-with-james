@@ -1,150 +1,91 @@
 "use client";
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import { ArrowRight } from "lucide-react";
 import { GMB } from "@/lib/gmb-data";
 
 export default function Process() {
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
+  const inView = useInView(ref, { once: true, margin: "-60px" });
 
   return (
-    <section id="process" className="py-24 md:py-36 px-6 sm:px-8" style={{ background: "#0A0A0A" }}>
-      <div className="max-w-6xl mx-auto" ref={ref}>
+    <section id="process" style={{ background: "var(--bg-secondary)", padding: "96px 0 112px" }}>
+      <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 24px" }} ref={ref}>
+
+        {/* Header */}
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={inView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.4 }}
-          className="text-xs uppercase tracking-widest mb-5"
-          style={{ color: "var(--accent)" }}
+          initial={{ opacity: 0, y: 16 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+          style={{ textAlign: "center", marginBottom: 64 }}
         >
-          How It Works
+          <p className="t-caption" style={{ marginBottom: 12 }}>How It Works</p>
+          <h2 className="t-title">
+            Simple process.{" "}
+            <span style={{ color: "var(--accent)" }}>Real results.</span>
+          </h2>
         </motion.div>
 
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7, delay: 0.1 }}
-          className="font-serif mb-16"
-          style={{
-            fontSize: "clamp(40px, 6vw, 72px)",
-            fontWeight: 500,
-            letterSpacing: "-0.02em",
-            lineHeight: 1.1,
-            color: "var(--text)",
-          }}
-        >
-          Simple process.
-          <br />
-          <span style={{ color: "var(--accent)", fontStyle: "italic" }}>
-            Serious results.
-          </span>
-        </motion.h2>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+        {/* Step cards */}
+        <div className="process-grid" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 12, marginBottom: 48 }}>
           {GMB.process.map((step, i) => (
             <motion.div
               key={step.number}
-              initial={{ opacity: 0, y: 24 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.2 + i * 0.1 }}
-              className="relative overflow-hidden rounded-2xl"
+              transition={{ duration: 0.5, delay: i * 0.1 }}
               style={{
-                background: "#111111",
-                border: "1px solid rgba(255,255,255,0.06)",
-                padding: "2.5rem 2rem",
-                cursor: "none",
-              }}
-              onMouseEnter={(e) => {
-                (e.currentTarget as HTMLElement).style.borderColor = "rgba(201,169,110,0.25)";
-                (e.currentTarget as HTMLElement).style.transform = "translateY(-3px)";
-                (e.currentTarget as HTMLElement).style.boxShadow = "0 16px 40px rgba(0,0,0,0.5)";
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget as HTMLElement).style.borderColor = "rgba(255,255,255,0.06)";
-                (e.currentTarget as HTMLElement).style.transform = "translateY(0)";
-                (e.currentTarget as HTMLElement).style.boxShadow = "none";
+                background: "#fff",
+                borderRadius: 16,
+                padding: "32px 24px 28px",
+                boxShadow: "0 1px 4px rgba(0,0,0,0.06)",
               }}
             >
-              {/* Watermark number */}
-              <div
-                className="absolute -bottom-6 -right-2 font-serif select-none pointer-events-none"
-                style={{
-                  fontSize: "130px",
-                  fontWeight: 700,
-                  lineHeight: 1,
-                  color: "rgba(201,169,110,0.05)",
-                }}
-              >
+              {/* Step number */}
+              <div style={{
+                width: 36, height: 36, borderRadius: "50%",
+                background: i === 0 ? "var(--accent)" : "var(--bg-secondary)",
+                color: i === 0 ? "#fff" : "var(--text)",
+                display: "flex", alignItems: "center", justifyContent: "center",
+                fontSize: 12, fontWeight: 700,
+                marginBottom: 24, flexShrink: 0,
+              }}>
                 {step.number}
               </div>
-
-              {/* Step number pill */}
-              <div
-                className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs uppercase tracking-widest mb-7"
-                style={{
-                  background: "rgba(201,169,110,0.07)",
-                  border: "1px solid rgba(201,169,110,0.18)",
-                  color: "var(--accent)",
-                }}
-              >
-                {step.number}
-              </div>
-
-              <h3
-                className="font-serif text-xl mb-3 relative z-10"
-                style={{ fontWeight: 600, letterSpacing: "-0.01em", color: "var(--text)" }}
-              >
+              <h3 style={{ fontSize: 15, fontWeight: 600, color: "var(--text)", letterSpacing: "-0.01em", marginBottom: 8 }}>
                 {step.title}
               </h3>
-
-              <p
-                className="text-sm relative z-10"
-                style={{ color: "var(--text-muted)", lineHeight: 1.75 }}
-              >
+              <p style={{ fontSize: 14, color: "var(--text-2)", lineHeight: 1.7 }}>
                 {step.description}
               </p>
-
-              {/* Bottom accent on hover */}
-              <div
-                className="absolute bottom-0 left-0 right-0 h-0.5 rounded-b-2xl"
-                style={{
-                  background: "linear-gradient(90deg, transparent, var(--accent), transparent)",
-                  opacity: 0,
-                  transition: "opacity 0.3s",
-                }}
-                onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.opacity = "1")}
-              />
             </motion.div>
           ))}
         </div>
 
+        {/* CTA row */}
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 12 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.7 }}
-          className="mt-14 text-center"
+          transition={{ duration: 0.5, delay: 0.5 }}
+          style={{ display: "flex", alignItems: "center", gap: 16, flexWrap: "wrap" }}
         >
           <a
             href="#contact"
-            className="inline-flex items-center gap-3 text-sm uppercase tracking-widest px-10 py-4 rounded-full transition-all duration-300"
             style={{
-              background: "var(--accent)",
-              color: "#0A0A0A",
-              fontWeight: 500,
-              cursor: "none",
-              boxShadow: "0 0 28px rgba(201,169,110,0.3)",
+              display: "inline-flex", alignItems: "center", gap: 6,
+              padding: "12px 28px", borderRadius: 999,
+              background: "var(--accent)", color: "#fff",
+              fontSize: 14, fontWeight: 500, textDecoration: "none",
+              transition: "background 0.2s",
             }}
-            onMouseEnter={(e) => {
-              (e.currentTarget as HTMLElement).style.boxShadow = "0 0 48px rgba(201,169,110,0.5)";
-              (e.currentTarget as HTMLElement).style.transform = "scale(1.04)";
-            }}
-            onMouseLeave={(e) => {
-              (e.currentTarget as HTMLElement).style.boxShadow = "0 0 28px rgba(201,169,110,0.3)";
-              (e.currentTarget as HTMLElement).style.transform = "scale(1)";
-            }}
+            onMouseEnter={e => ((e.currentTarget as HTMLElement).style.background = "var(--accent-hover)")}
+            onMouseLeave={e => ((e.currentTarget as HTMLElement).style.background = "var(--accent)")}
           >
-            Start the conversation
+            Start the conversation <ArrowRight size={14} />
           </a>
+          <span style={{ fontSize: 14, color: "var(--text-3)" }}>
+            Free 30-min discovery call · No obligation
+          </span>
         </motion.div>
       </div>
     </section>
