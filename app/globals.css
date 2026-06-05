@@ -213,6 +213,10 @@ input, textarea {
   animation: marquee-scroll 22s linear infinite;
 }
 
+/* ── Contact grid (desktop default) ── */
+.contact-grid { grid-template-columns: 1fr 1fr; }
+.contact-name-email { grid-template-columns: 1fr 1fr; }
+
 /* ── Mobile responsive overrides ── */
 @media (max-width: 768px) {
 
@@ -249,12 +253,17 @@ input, textarea {
   /* Contact — two-col layout */
   .contact-grid {
     grid-template-columns: 1fr !important;
-    gap: 32px !important;
+    gap: 28px !important;
   }
 
   /* Contact — name/email row */
   .contact-name-email {
     grid-template-columns: 1fr !important;
+  }
+
+  /* Contact — section padding */
+  .contact-section {
+    padding: 64px 0 80px !important;
   }
 
   /* Footer — CTA band */

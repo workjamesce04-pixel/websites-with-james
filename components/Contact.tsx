@@ -45,7 +45,7 @@ export default function Contact() {
   ];
 
   return (
-    <section id="contact" style={{ background: "#fff", padding: "96px 0 112px" }}>
+    <section id="contact" className="contact-section" style={{ background: "#fff", padding: "96px 0 112px" }}>
       <Toaster position="top-right" />
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 24px" }} ref={ref}>
 
@@ -67,7 +67,7 @@ export default function Contact() {
         </motion.div>
 
         {/* Two-col layout */}
-        <div className="contact-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 48 }}>
+        <div className="contact-grid" style={{ display: "grid", gap: 48 }}>
 
           {/* Form */}
           <motion.form
@@ -77,7 +77,7 @@ export default function Contact() {
             onSubmit={handleSubmit}
             style={{ display: "flex", flexDirection: "column", gap: 12 }}
           >
-            <div className="contact-name-email" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
+            <div className="contact-name-email" style={{ display: "grid", gap: 12 }}>
               <input style={field} placeholder="Your name" value={form.name} required
                 onChange={e => setForm({ ...form, name: e.target.value })}
                 onFocus={e => (e.target.style.borderColor = "var(--accent)")}
