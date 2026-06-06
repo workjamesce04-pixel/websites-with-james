@@ -17,16 +17,16 @@ export default function Footer() {
     <footer style={{ background: "var(--bg-secondary)" }}>
 
       {/* CTA band */}
-      <div style={{ maxWidth: 1200, margin: "0 auto", padding: "64px 24px 0" }}>
+      <div style={{ maxWidth: 1200, margin: "0 auto", padding: "5.5vw 5vw 0" }}>
         <div className="footer-cta-band" style={{
           borderRadius: 20,
           background: "var(--text)",
-          padding: "48px 48px",
+          padding: "4vw 4vw",
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
           gap: 32,
-          marginBottom: 64,
+          marginBottom: "5.5vw",
           flexWrap: "wrap",
         }}>
           <div>
@@ -50,7 +50,7 @@ export default function Footer() {
         </div>
 
         {/* Main grid */}
-        <div className="footer-main-grid" style={{ display: "grid", gridTemplateColumns: "1.4fr 1fr 1fr", gap: 48, marginBottom: 48 }}>
+        <div className="footer-main-grid" style={{ display: "grid", gridTemplateColumns: "1.4fr 1fr 1fr", gap: "4vw", marginBottom: "4vw" }}>
 
           {/* Brand */}
           <div>
@@ -100,7 +100,7 @@ export default function Footer() {
         {/* Bottom bar */}
         <div style={{
           borderTop: "1px solid var(--border)",
-          paddingTop: 24, paddingBottom: 40,
+          paddingTop: "2vw", paddingBottom: "3.5vw",
           display: "flex", justifyContent: "space-between", alignItems: "center",
           flexWrap: "wrap", gap: 8,
           fontSize: 13, color: "var(--text-3)",

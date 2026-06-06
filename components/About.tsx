@@ -32,8 +32,8 @@ export default function About() {
 
           {/* Image */}
           <motion.div
-            initial={{ opacity: 0, x: -28 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
+            initial={{ opacity: 0, y: 24 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
             className="relative"
           >
@@ -68,8 +68,8 @@ export default function About() {
 
           {/* Content */}
           <motion.div
-            initial={{ opacity: 0, x: 28 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
+            initial={{ opacity: 0, y: 24 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
           >
             <p className="t-caption mb-4">About</p>

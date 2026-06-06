@@ -17,19 +17,19 @@ export default function Hero() {
         minHeight: "100svh",
         display: "flex",
         alignItems: "center",
-        paddingTop: 80,
-        paddingBottom: 64,
+        paddingTop: "7vw",
+        paddingBottom: "5.5vw",
       }}
     >
-      <div style={{
+      <div className="hero-inner" style={{
         maxWidth: 1200,
         margin: "0 auto",
-        padding: "0 24px",
+        padding: "0 5vw",
         width: "100%",
         display: "flex",
-        flexDirection: "row",
+        flexDirection: "column",
         alignItems: "center",
-        gap: 48,
+        gap: "4vw",
       }}>
 
         {/* Left — text */}
@@ -180,7 +180,8 @@ export default function Hero() {
             initial={{ opacity: 0, y: 10 }}
             animate={ready ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.4, delay: 1.1 }}
-            style={{
+            className="hero-badge"
+          style={{
               position: "absolute", left: -24, top: "32%",
               background: "rgba(255,255,255,0.96)", backdropFilter: "blur(16px)",
               borderRadius: 16, padding: "12px 18px",
@@ -195,7 +196,8 @@ export default function Hero() {
             initial={{ opacity: 0, y: 10 }}
             animate={ready ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.4, delay: 1.25 }}
-            style={{
+            className="hero-badge"
+          style={{
               position: "absolute", right: -16, top: "22%",
               background: "rgba(255,255,255,0.96)", backdropFilter: "blur(16px)",
               borderRadius: 16, padding: "12px 18px",
@@ -208,11 +210,6 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      <style>{`
-        @media (max-width: 900px) {
-          .hero-photo-col { display: none !important; }
-        }
-      `}</style>
     </section>
   );
 }

@@ -11,8 +11,8 @@ export default function SocialProof() {
   const inView = useInView(ref, { once: true, margin: "-60px" });
 
   return (
-    <section id="reviews" style={{ background: "var(--bg-secondary)", padding: "96px 0 112px" }}>
-      <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 24px" }} ref={ref}>
+    <section id="reviews" style={{ background: "var(--bg-secondary)", padding: "8vw 0 9vw" }}>
+      <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 5vw" }} ref={ref}>
 
         {/* Header */}
         <motion.div
@@ -45,7 +45,7 @@ export default function SocialProof() {
         </motion.div>
 
         {/* Review cards */}
-        <div className="reviews-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16, marginBottom: 48 }}>
+        <div className="reviews-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16, marginBottom: "4vw" }}>
           {(GMB.reviews as unknown as Review[]).map((review, i) => (
             <motion.div
               key={i}
@@ -55,7 +55,7 @@ export default function SocialProof() {
               style={{
                 background: "#fff",
                 borderRadius: 16,
-                padding: "28px 28px 24px",
+                padding: "2.3vw 2.3vw 2vw",
                 boxShadow: "0 1px 4px rgba(0,0,0,0.06)",
                 display: "flex", flexDirection: "column",
               }}

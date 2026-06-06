@@ -45,16 +45,16 @@ export default function Contact() {
   ];
 
   return (
-    <section id="contact" className="contact-section" style={{ background: "#fff", padding: "96px 0 112px" }}>
+    <section id="contact" className="contact-section" style={{ background: "#fff", padding: "8vw 0 9vw" }}>
       <Toaster position="top-right" />
-      <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 24px" }} ref={ref}>
+      <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 5vw" }} ref={ref}>
 
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          style={{ textAlign: "center", marginBottom: 64 }}
+          style={{ textAlign: "center", marginBottom: "5.5vw" }}
         >
           <p style={{ fontSize: 12, fontWeight: 500, letterSpacing: "0.06em", textTransform: "uppercase", color: "var(--text-3)", marginBottom: 12 }}>Contact</p>
           <h2 style={{ fontSize: "clamp(36px, 5vw, 56px)", fontWeight: 700, letterSpacing: "-0.025em", lineHeight: 1.1, color: "var(--text)", marginBottom: 16 }}>
@@ -67,12 +67,12 @@ export default function Contact() {
         </motion.div>
 
         {/* Two-col layout */}
-        <div className="contact-grid" style={{ display: "grid", gap: 48 }}>
+        <div className="contact-grid" style={{ display: "grid", gap: "4vw" }}>
 
           {/* Form */}
           <motion.form
-            initial={{ opacity: 0, x: -20 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
+            initial={{ opacity: 0, y: 20 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.1 }}
             onSubmit={handleSubmit}
             style={{ display: "flex", flexDirection: "column", gap: 12 }}
@@ -111,8 +111,8 @@ export default function Contact() {
 
           {/* Info */}
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
+            initial={{ opacity: 0, y: 20 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.2 }}
             style={{ display: "flex", flexDirection: "column", gap: 12 }}
           >

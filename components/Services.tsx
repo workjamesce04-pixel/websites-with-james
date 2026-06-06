@@ -13,15 +13,15 @@ export default function Services() {
   const inView = useInView(ref, { once: true, margin: "-60px" });
 
   return (
-    <section id="services" style={{ background: "var(--bg)", padding: "96px 0 112px" }}>
-      <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 24px" }} ref={ref}>
+    <section id="services" style={{ background: "var(--bg)", padding: "8vw 0 9vw" }}>
+      <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 5vw" }} ref={ref}>
 
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          style={{ textAlign: "center", marginBottom: 64 }}
+          style={{ textAlign: "center", marginBottom: "5.5vw" }}
         >
           <p className="t-caption" style={{ marginBottom: 12 }}>Services</p>
           <h2 className="t-title">
@@ -47,7 +47,7 @@ export default function Services() {
             marginBottom: 16,
           }}
         >
-          <div className="services-banner-text" style={{ flex: "0 0 44%", padding: "48px 44px", display: "flex", flexDirection: "column", justifyContent: "center" }}>
+          <div className="services-banner-text" style={{ flex: "0 0 44%", padding: "4vw 3.7vw", display: "flex", flexDirection: "column", justifyContent: "center" }}>
             <span style={{
               display: "inline-block", alignSelf: "flex-start", marginBottom: 16,
               padding: "4px 12px", borderRadius: 999,
@@ -98,7 +98,7 @@ export default function Services() {
                 style={{
                   background: "var(--bg-secondary)",
                   borderRadius: 16,
-                  padding: "28px 28px 32px",
+                  padding: "2.3vw 2.3vw 2.7vw",
                   transition: "background 0.2s, transform 0.2s",
                 }}
                 onMouseEnter={(e) => {

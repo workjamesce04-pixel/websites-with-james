@@ -26,13 +26,13 @@ export default function Gallery() {
   const inView = useInView(ref, { once: true, margin: "-60px" });
 
   return (
-    <section id="gallery" style={{ background: "var(--bg)", padding: "96px 0 112px" }} ref={ref}>
-      <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 24px" }}>
+    <section id="gallery" style={{ background: "var(--bg)", padding: "8vw 0 9vw" }} ref={ref}>
+      <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 5vw" }}>
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          style={{ textAlign: "center", marginBottom: 64 }}
+          style={{ textAlign: "center", marginBottom: "5.5vw" }}
         >
           <p className="t-caption" style={{ marginBottom: 12 }}>Work</p>
           <h2 className="t-title">
@@ -136,7 +136,7 @@ export default function Gallery() {
         </motion.div>
 
         {/* Upcoming */}
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
+        <div className="upcoming-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
           {upcoming.map((item, i) => (
             <motion.div
               key={i}

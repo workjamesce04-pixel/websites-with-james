@@ -31,22 +31,25 @@
   --color-foreground: var(--text);
 }
 
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; min-width: 0; }
 
 html {
-  scroll-behavior: auto;
-  overflow-x: hidden;
+  /* clip (not hidden) — avoids iOS Safari treating html as a scroll container
+     which would kill vertical scrolling and cause the white-abyss zoom-out */
+  overflow-x: clip;
   max-width: 100%;
+  scroll-behavior: auto;
 }
 
 body {
+  overflow-x: clip;
+  max-width: 100%;
+  width: 100%;
   background: var(--bg);
   color: var(--text);
   font-family: var(--font-inter), "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
-  max-width: 100%;
 }
 
 /* ── Typography scale ── */
@@ -97,20 +100,20 @@ body {
 
   /* Layout */
   .section-pad {
-    padding-top: 80px;
-    padding-bottom: 80px;
+    padding-top: 7vw;
+    padding-bottom: 7vw;
   }
   .section-pad-lg {
-    padding-top: 120px;
-    padding-bottom: 120px;
+    padding-top: 10vw;
+    padding-bottom: 10vw;
   }
   .container-base {
     width: 100%;
     max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
-    padding-left: 22px;
-    padding-right: 22px;
+    padding-left: 5vw;
+    padding-right: 5vw;
   }
 
   /* Cards */
@@ -217,6 +220,20 @@ input, textarea {
 .contact-grid { grid-template-columns: 1fr 1fr; }
 .contact-name-email { grid-template-columns: 1fr 1fr; }
 
+/* ── Hero layout ── */
+@media (min-width: 901px) {
+  .hero-inner { flex-direction: row !important; }
+}
+@media (max-width: 900px) {
+  .hero-photo-col { display: none !important; }
+  .hero-badge    { display: none !important; }
+  .hero-inner    { flex-direction: column !important; }
+  #hero {
+    padding-top: max(80px, 12vw) !important;
+    padding-bottom: 12vw !important;
+  }
+}
+
 /* ── Mobile responsive overrides ── */
 @media (max-width: 768px) {
 
@@ -270,7 +287,7 @@ input, textarea {
   .footer-cta-band {
     flex-direction: column !important;
     text-align: center !important;
-    align-items: flex-start !important;
+    align-items: center !important;
     padding: 32px 24px !important;
   }
 
@@ -283,6 +300,11 @@ input, textarea {
   /* Hero — trust strip dividers */
   .hero-trust-divider {
     display: none !important;
+  }
+
+  /* Gallery — upcoming cards grid */
+  .upcoming-grid {
+    grid-template-columns: 1fr !important;
   }
 }
 

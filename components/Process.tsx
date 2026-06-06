@@ -9,15 +9,15 @@ export default function Process() {
   const inView = useInView(ref, { once: true, margin: "-60px" });
 
   return (
-    <section id="process" style={{ background: "var(--bg-secondary)", padding: "96px 0 112px" }}>
-      <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 24px" }} ref={ref}>
+    <section id="process" style={{ background: "var(--bg-secondary)", padding: "8vw 0 9vw" }}>
+      <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 5vw" }} ref={ref}>
 
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          style={{ textAlign: "center", marginBottom: 64 }}
+          style={{ textAlign: "center", marginBottom: "5.5vw" }}
         >
           <p className="t-caption" style={{ marginBottom: 12 }}>How It Works</p>
           <h2 className="t-title">
@@ -27,7 +27,7 @@ export default function Process() {
         </motion.div>
 
         {/* Step cards */}
-        <div className="process-grid" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 12, marginBottom: 48 }}>
+        <div className="process-grid" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 12, marginBottom: "4vw" }}>
           {GMB.process.map((step, i) => (
             <motion.div
               key={step.number}
@@ -37,7 +37,7 @@ export default function Process() {
               style={{
                 background: "#fff",
                 borderRadius: 16,
-                padding: "32px 24px 28px",
+                padding: "2.7vw 2vw 2.3vw",
                 boxShadow: "0 1px 4px rgba(0,0,0,0.06)",
               }}
             >
