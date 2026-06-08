@@ -59,6 +59,7 @@ export default function About() {
                 background: "rgba(255,255,255,0.95)",
                 backdropFilter: "blur(16px)",
                 boxShadow: "0 8px 32px rgba(0,0,0,0.12)",
+                padding: "16px",
               }}
             >
               <div className="text-sm font-semibold" style={{ color: "var(--text)" }}>Ex-BCG Consultant</div>

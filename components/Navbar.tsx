@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { GMB } from "@/lib/gmb-data";
 
@@ -39,8 +40,15 @@ export default function Navbar() {
       >
         <div className="max-w-[1200px] mx-auto px-6 h-[48px] flex items-center justify-between">
           {/* Logo */}
-          <a href="#" className="text-sm font-semibold tracking-tight" style={{ color: "var(--text)", letterSpacing: "-0.02em" }}>
-            Websites With James
+          <a href="#" className="flex items-center">
+            <Image
+              src="/logo/svg/logo-navbar.svg"
+              alt="Websites With James"
+              width={420}
+              height={80}
+              className="h-8 w-auto"
+              priority
+            />
           </a>
 
           {/* Desktop links — centered */}
