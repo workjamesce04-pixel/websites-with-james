@@ -26,7 +26,7 @@ export default function Contact() {
       if (!data.success) throw new Error(data.message);
       router.push("/thank-you");
     } catch {
-      toast.error("Something went wrong. Email workjamesce04@gmail.com directly.");
+      toast.error("Something went wrong. Email james@websiteswithjames.co.uk directly.");
     } finally { setSending(false); }
   };
 

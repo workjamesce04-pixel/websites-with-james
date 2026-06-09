@@ -19,7 +19,7 @@ export const GMB = {
   phone: "07387 116753",
   phoneTel: "+447387116753",
   whatsapp: "447387116753",
-  email: "workjamesce04@gmail.com",
+  email: "james@websiteswithjames.co.uk",
   hours: "Open 24 hours",
   rating: 5.0,
   reviewCount: 1,
